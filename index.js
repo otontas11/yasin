@@ -5,9 +5,7 @@ let listMeal = [];
 //url den id yi cek
 const queryString = window.location.href;
 let getId = queryString.split("/").pop().split('.')[0];
-
-console.log("html",queryString,getId);
-
+ 
 //kuran sesleri verisi
 let dataSoundArray = [
   { id: 1, name: "Ahmad bin Ali Al-Ajmi", file: "ahmed" },
@@ -46,7 +44,7 @@ for (let i = 0; i < dataMealArray.length; i++) {
     <td class="col-md-1">${data.name}</td>
     <td>
         <audio controls="" controlslist="nodownload">
-            <source src="/ses/${data.file}/${getId}.mp3" type="audio/mpeg">
+            <source src="../ses/${data.file}/${getId}.mp3" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio> 
     </td>
