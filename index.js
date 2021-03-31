@@ -10,10 +10,10 @@ let getId = queryString.split("/").pop().split('.')[0];
 let dataSoundArray = [
   { id: 1, name: "Ahmad bin Ali Al-Ajmi", file: "ahmed" },
   { id: 2, name: "Bünyamin Topçuoğlu", file: "bunyamin" },
-  { id: 2, name: "Fatih Çollak", file: "fatih" },
-  { id: 3, name: "İshak Danış", file: "ishak" },
-  { id: 4, name: "Nasser Al Qatimi", file: "nasser" },
-  { id: 5, name: "Saad Ghamidi", file: "saad" },
+  { id: 3, name: "Fatih Çollak", file: "fatih" },
+  { id: 4, name: "İshak Danış", file: "ishak" },
+  { id: 5, name: "Nasser Al Qatimi", file: "nasser" },
+  { id: 6, name: "Saad Ghamidi", file: "saad" },
 ];
 
 //meal verisi
@@ -23,7 +23,8 @@ let dataMealArray = [{ id: 6, name: "Türkçe", file: "meal" }];
 for (let i = 0; i < dataSoundArray.length; i++) {
   var data = dataSoundArray[i];
   listQuran.push(`
-  <tr>
+  <br/>
+  <tr class="mb-2">
   <td class="col-md-1">${data.name}</td>
   <td>
       <audio controls="" controlslist="nodownload">
@@ -32,14 +33,20 @@ for (let i = 0; i < dataSoundArray.length; i++) {
       </audio> 
   </td>
 </tr>`);
+
 }
 
-document.getElementById("quranSound").innerHTML = listQuran;
+console.log("listQuran",
+listQuran.slice(Math.max(listQuran.length - 6, 0)).join(" ") );
+
+
+document.getElementById("quranSound").innerHTML =  listQuran.slice(Math.max(listQuran.length - 6, 0)).join(" ");
 
 //meal sesleri ekleme
 for (let i = 0; i < dataMealArray.length; i++) {
   var data = dataMealArray[i];
   listMeal.push(`
+  <br/>
     <tr>
     <td class="col-md-1">${data.name}</td>
     <td>
@@ -52,3 +59,14 @@ for (let i = 0; i < dataMealArray.length; i++) {
 }
 
 document.getElementById("mealSound").innerHTML = listMeal;
+
+
+//biri çalarken diğerini durdur
+document.addEventListener('play', function(e){
+  var audios = document.getElementsByTagName('audio');
+  for(var i = 0, len = audios.length; i < len;i++){
+      if(audios[i] != e.target){
+          audios[i].pause();
+      }
+  }
+}, true);
