@@ -34,13 +34,10 @@ for (let i = 0; i < dataSoundArray.length; i++) {
   </td>
 </tr>`);
 
-}
+} 
 
-console.log("listQuran",
-listQuran.slice(Math.max(listQuran.length - 6, 0)).join(" ") );
-
-
-document.getElementById("quranSound").innerHTML =  listQuran.slice(Math.max(listQuran.length - 6, 0)).join(" ");
+ //array içerisindeki virgğlleri sil
+document.getElementById("quranSound").innerHTML =  listQuran.slice(Math.max(0, 0)).join(" ");
 
 //meal sesleri ekleme
 for (let i = 0; i < dataMealArray.length; i++) {
@@ -58,7 +55,7 @@ for (let i = 0; i < dataMealArray.length; i++) {
   </tr>`);
 }
 
-document.getElementById("mealSound").innerHTML = listMeal;
+document.getElementById("mealSound").innerHTML = listMeal.slice(Math.max(0, 0)).join(" ");
 
 
 //biri çalarken diğerini durdur
